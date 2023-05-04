@@ -6,18 +6,20 @@ on:
       - main
 
 jobs:
-cancel-previous-build:
+  cancel-previous-build:
     name: Cancel Previous Builds
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
         with:
-          access_token: ${{ github.token }}
+          access_token: ${{ secrets.GITHUB_TOKEN }}
   build:
     name: Linter
     needs: cancel-previous-build
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: ['16']
