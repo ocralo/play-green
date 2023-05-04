@@ -35,10 +35,14 @@
     "react/jsx-uses-vars": "off",
     "react/react-in-jsx-scope": "off",
     "react-refresh/only-export-components": "warn",
-    "react/jsx-filename-extension": [
-      "warn",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
       {
-        "extensions": [".jsx", ".tsx"]
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
     ]
   }
