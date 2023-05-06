@@ -10,13 +10,16 @@ import {AuthContext} from './interfaces'
 import {contextAuth, initialState} from './context'
 import {AuthContextReducer} from './reducer'
 import AuthActionTypes from './types'
+import parseInitialState from './parseInitialState'
 
 export default function AuthProvider({
   children,
 }: AuthContext.Props): JSX.Element {
-  const [state, dispatch] = useReducer<
-    (state: AuthContext.State, action: AuthContext.Action) => AuthContext.State
-  >(AuthContextReducer, initialState)
+  const [state, dispatch] = useReducer(
+    AuthContextReducer,
+    initialState,
+    parseInitialState
+  )
 
   const signUp = async (email: string, password: string): Promise<void> => {
     dispatch({type: AuthActionTypes.SIGNUP_START})
@@ -63,8 +66,8 @@ export default function AuthProvider({
           payload: {
             user: {
               id: user.uid,
-              email: user?.email as string,
-              name: (user?.displayName as string) || '',
+              email: user.email as string,
+              name: (user.displayName as string) || '',
             },
             isAuthenticated: true,
           },
