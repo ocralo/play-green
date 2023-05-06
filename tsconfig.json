@@ -22,8 +22,13 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@context/*": ["src/context/*"],
+      "@routes/*": ["src/Routes/*"],
       "@assets/*": ["src/assets/*"],
       "@public/*": ["public/*"],
+      "@pages/*": ["src/pages/*"],
     }
   },
   "include": ["src"],
