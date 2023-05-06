@@ -24,6 +24,7 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
+      "@utils/*": ["src/utils/*"],
       "@context/*": ["src/context/*"],
       "@routes/*": ["src/Routes/*"],
       "@assets/*": ["src/assets/*"],

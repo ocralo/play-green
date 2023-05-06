@@ -1,3 +1,4 @@
+import {setSessionStorage} from '@utils/sessionStorage'
 import {AuthContext} from './interfaces'
 import AuthActionTypes from './types'
 
@@ -24,6 +25,13 @@ export function AuthContextReducer(
         isAuthenticated: false,
       }
     case AuthActionTypes.SIGNUP_SUCCESS:
+      setSessionStorage('user', {
+        ...state,
+        isLoading: false,
+        error: null,
+        user: payload.user,
+        isAuthenticated: payload.isAuthenticated,
+      })
       return {
         ...state,
         isLoading: false,
@@ -40,6 +48,13 @@ export function AuthContextReducer(
         isAuthenticated: false,
       }
     case AuthActionTypes.LOGIN_SUCCESS:
+      setSessionStorage('user', {
+        ...state,
+        isLoading: false,
+        error: null,
+        user: payload.user,
+        isAuthenticated: payload.isAuthenticated,
+      })
       return {
         ...state,
         isLoading: false,
@@ -56,6 +71,13 @@ export function AuthContextReducer(
         isAuthenticated: false,
       }
     case AuthActionTypes.LOGOUT_SUCCESS:
+      setSessionStorage('user', {
+        ...state,
+        isLoading: false,
+        error: null,
+        user: null,
+        isAuthenticated: false,
+      })
       return {
         ...state,
         isLoading: false,
