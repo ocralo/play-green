@@ -24,21 +24,17 @@ export function AuthContextReducer(
         user: null,
         isAuthenticated: false,
       }
-    case AuthActionTypes.SIGNUP_SUCCESS:
-      setSessionStorage('user', {
-        ...state,
-        isLoading: false,
-        error: null,
-        user: payload.user,
-        isAuthenticated: payload.isAuthenticated,
-      })
-      return {
+    case AuthActionTypes.SIGNUP_SUCCESS: {
+      const newState = {
         ...state,
         isLoading: false,
         error: null,
         user: payload.user,
         isAuthenticated: payload.isAuthenticated,
       }
+      setSessionStorage('user', newState)
+      return newState
+    }
     case AuthActionTypes.SIGNUP_FAIL:
       return {
         ...state,
@@ -47,21 +43,17 @@ export function AuthContextReducer(
         user: null,
         isAuthenticated: false,
       }
-    case AuthActionTypes.LOGIN_SUCCESS:
-      setSessionStorage('user', {
-        ...state,
-        isLoading: false,
-        error: null,
-        user: payload.user,
-        isAuthenticated: payload.isAuthenticated,
-      })
-      return {
+    case AuthActionTypes.LOGIN_SUCCESS: {
+      const newState = {
         ...state,
         isLoading: false,
         error: null,
         user: payload.user,
         isAuthenticated: payload.isAuthenticated,
       }
+      setSessionStorage('user', newState)
+      return newState
+    }
     case AuthActionTypes.LOGIN_FAIL:
       return {
         ...state,
@@ -70,21 +62,17 @@ export function AuthContextReducer(
         user: null,
         isAuthenticated: false,
       }
-    case AuthActionTypes.LOGOUT_SUCCESS:
-      setSessionStorage('user', {
+    case AuthActionTypes.LOGOUT_SUCCESS: {
+      const newState = {
         ...state,
         isLoading: false,
         error: null,
-        user: null,
-        isAuthenticated: false,
-      })
-      return {
-        ...state,
-        isLoading: false,
-        error: null,
-        user: null,
-        isAuthenticated: false,
+        user: payload.user,
+        isAuthenticated: payload.isAuthenticated,
       }
+      setSessionStorage('user', newState)
+      return newState
+    }
     case AuthActionTypes.LOGOUT_FAIL:
       return {
         ...state,
