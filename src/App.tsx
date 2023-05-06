@@ -1,7 +1,14 @@
-import './App.css'
+import RoutesApp from '@routes/index'
+import AuthProvider from '@context/AuthContext'
 
-function App() {
-  return <div>Hello</div>
+function App(): JSX.Element {
+  return (
+    <>
+      <AuthProvider>
+        <RoutesApp />
+      </AuthProvider>
+    </>
+  )
 }
 
 export default App
