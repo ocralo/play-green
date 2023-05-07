@@ -67,8 +67,8 @@ export function AuthContextReducer(
         ...state,
         isLoading: false,
         error: null,
-        user: payload.user,
-        isAuthenticated: payload.isAuthenticated,
+        user: null,
+        isAuthenticated: false,
       }
       setSessionStorage('user', newState)
       return newState
