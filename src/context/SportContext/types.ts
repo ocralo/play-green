@@ -1,0 +1,7 @@
+enum SportActionType {
+  GET_SPORTS_START = 'GET_SPORTS_START',
+  GET_SPORTS_SUCCESS = 'GET_SPORTS_SUCCESS',
+  GET_SPORTS_FAIL = 'GET_SPORTS_FAIL',
+}
+
+export default SportActionType
