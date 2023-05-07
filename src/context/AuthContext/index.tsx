@@ -73,7 +73,7 @@ export default function AuthProvider({
           },
         })
       } else {
-        dispatch({type: AuthActionTypes.LOGOUT_SUCCESS})
+        logout()
       }
     })
     return () => unsubscribe()
