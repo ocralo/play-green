@@ -1,6 +1,14 @@
 import {useState} from 'react'
-import {useAuth} from '@context/AuthContext/hooks'
 import {useNavigate} from 'react-router-dom'
+
+import {useAuth} from '@context/AuthContext/hooks'
+
+import FormInput from '@components/FormInput'
+import ErrorText from '@components/ErrorText'
+import Button from '@components/Button'
+import Form from '@components/Form'
+
+import {LoginLayout} from './layout'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -9,7 +17,7 @@ export default function Login() {
     password: '',
   })
 
-  const {login, error, logout} = useAuth()
+  const {login, error} = useAuth()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setUser({
@@ -26,22 +34,47 @@ export default function Login() {
     navigate('/home')
   }
 
+  const handleSingUp = (): void => {
+    navigate('/sing-up')
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor='email'>Email</label>
-      <input type='email' name='email' id='email' onChange={handleChange} />
-      <label htmlFor='password'>Password</label>
-      <input
-        type='password'
-        name='password'
-        id='password'
-        onChange={handleChange}
-      />
-      <button type='submit'>Login</button>
-      <button type='button' onClick={() => logout()}>
-        Logout
-      </button>
-      {error && <p style={{color: 'white'}}>{error}</p>}
-    </form>
+    <LoginLayout>
+      <h1 className='login-title'>Welcome</h1>
+      <h6 className='login-description'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </h6>
+      <Form className='login-form' onSubmit={handleSubmit}>
+        <FormInput
+          className='login-input-user'
+          label='User'
+          name='email'
+          id='email'
+          type='email'
+          value={user.email}
+          onChange={handleChange}
+        />
+        <FormInput
+          className='login-input-password'
+          label='Password'
+          name='password'
+          id='password'
+          type='password'
+          value={user.password}
+          onChange={handleChange}
+        />
+        {error && <ErrorText error={error} />}
+        <p className='login-forgot'>Forgot your password?</p>
+        <Button className='login-submit-button' type='submit'>
+          Login
+        </Button>
+        <Button
+          type='button'
+          className='login-signup-button'
+          onClick={handleSingUp}>
+          SingUp
+        </Button>
+      </Form>
+    </LoginLayout>
   )
 }
