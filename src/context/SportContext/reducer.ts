@@ -29,6 +29,27 @@ export function SportContextReducer(
         sports: null,
         error: payload.error,
       }
+    case SportActionType.ADD_LIKE_SPORT_START:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      }
+    case SportActionType.ADD_LIKE_SPORT_SUCCESS: {
+      const sportsLiked = state.sportsLiked || []
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        sportsLiked: [...sportsLiked, payload.sportsLiked],
+      }
+    }
+    case SportActionType.ADD_LIKE_SPORT_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload.error,
+      }
     default:
       return state
   }
