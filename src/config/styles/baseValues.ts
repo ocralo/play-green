@@ -1,7 +1,7 @@
 export const baseValues = {
   fontFamily: {
-    primary: '\'DM Sans\', sans-serif',
-    secondary: '\'Epilogue\', sans-serif',
+    primary: "'DM Sans', sans-serif",
+    secondary: "'Epilogue', sans-serif",
   },
   fontSizes: {
     small: '1.4rem',

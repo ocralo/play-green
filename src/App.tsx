@@ -8,7 +8,7 @@ import {darkTheme, lightTheme} from '@config/styles/themes'
 import StyleEnum from '@config/styles/enums'
 
 function App(): JSX.Element {
-  const { theme } = useContext(contextThemeStyle)
+  const {theme} = useContext(contextThemeStyle)
   return (
     <>
       <ThemeProvider

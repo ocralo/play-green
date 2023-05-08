@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 10px;
     font-family: 'DM Sans', sans-serif;
-    font-family: 'Epilogue', sans-serif;
   }
 `
 
