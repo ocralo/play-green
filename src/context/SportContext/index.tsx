@@ -1,5 +1,7 @@
 import {useReducer} from 'react'
 import apiGetSports from '@config/axios/sports'
+import {addSportLiked} from '@config/firebase/sport'
+import {SportFirebase} from '@config/firebase/sport/interfaces'
 import {contextSport, initialState} from './context'
 import {SportContext} from './interfaces'
 import {SportContextReducer} from './reducer'
@@ -26,8 +28,50 @@ export default function SportProvider({
     }
   }
 
+  const addLikeSport = async (
+    sportLiked: SportFirebase.ISportLiked
+  ): Promise<void> => {
+    dispatch({
+      type: SportActionType.ADD_LIKE_SPORT_START,
+    })
+    try {
+      await addSportLiked(sportLiked)
+      const sport = {...sportLiked}
+      const {liked, ...newSport} = sport
+
+      dispatch({
+        type: SportActionType.ADD_LIKE_SPORT_SUCCESS,
+        payload: {sportsLiked: newSport},
+      })
+    } catch (error: any) {
+      dispatch({
+        type: SportActionType.ADD_LIKE_SPORT_FAIL,
+        payload: {error: error.message},
+      })
+    }
+  }
+
+  const getLikesSports = async (): Promise<void> => {
+    dispatch({
+      type: SportActionType.GET_LIKED_SPORTS_START,
+    })
+    try {
+      const response = await apiGetSports()
+      dispatch({
+        type: SportActionType.GET_LIKED_SPORTS_SUCCESS,
+        payload: {sports: response},
+      })
+    } catch (error: any) {
+      dispatch({
+        type: SportActionType.GET_LIKED_SPORTS_FAIL,
+        payload: {error: error.message},
+      })
+    }
+  }
+
   return (
-    <contextSport.Provider value={{...state, getSports}}>
+    <contextSport.Provider
+      value={{...state, getSports, addLikeSport, getLikesSports}}>
       {children}
     </contextSport.Provider>
   )
