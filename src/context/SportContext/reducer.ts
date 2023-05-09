@@ -50,6 +50,11 @@ export function SportContextReducer(
         isLoading: false,
         error: payload.error,
       }
+    case SportActionType.SET_SPORT:
+      return {
+        ...state,
+        sport: payload.sport,
+      }
     default:
       return state
   }

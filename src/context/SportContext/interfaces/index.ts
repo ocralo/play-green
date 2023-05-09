@@ -3,8 +3,9 @@ import {SportClient} from '@config/axios/sports/interfaces/client'
 
 export namespace SportContext {
   export interface State {
-    sports: SportClient.ResponseSportList[] | null
-    sportsLiked: SportClient.ResponseSportList[] | null
+    sport: SportClient.ISport | null
+    sports: SportClient.ISport[] | null
+    sportsLiked: SportFirebase.ISportLiked[] | null
     isLoading: boolean
     error: string | null
     getSports(): Promise<void>
