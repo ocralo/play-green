@@ -60,6 +60,8 @@ export default function AuthProvider({
   }
 
   useEffect(() => {
+    dispatch({type: AuthActionTypes.LOGIN_START})
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch({

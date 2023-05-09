@@ -1,6 +1,6 @@
 import {useReducer} from 'react'
 import apiGetSports from '@config/axios/sports'
-import {addSportLiked} from '@config/firebase/sport'
+import {addSportLiked, getSportsLiked} from '@config/firebase/sport'
 import {SportFirebase} from '@config/firebase/sport/interfaces'
 import randomNumber from '@utils/index'
 import {contextSport, initialState} from './context'
@@ -68,10 +68,10 @@ export default function SportProvider({
       type: SportActionType.GET_LIKED_SPORTS_START,
     })
     try {
-      const response = await apiGetSports()
+      const response = await getSportsLiked()
       dispatch({
         type: SportActionType.GET_LIKED_SPORTS_SUCCESS,
-        payload: {sports: response},
+        payload: {sportsLiked: response},
       })
     } catch (error: any) {
       dispatch({
