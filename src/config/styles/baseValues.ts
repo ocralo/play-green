@@ -30,7 +30,7 @@ export const baseValues = {
     xlarge: '2.4rem',
   },
   boxShadow: {
-    small: '0px 4px 10px rgba(35, 107, 254, 0.2)',
+    small: '0px 10px 25px rgba(0, 0, 0, 0.08);',
     medium: '0px 4px 10px rgba(35, 107, 254, 0.2)',
     large: '0px 10px 25px rgba(35, 107, 254, 0.2)',
     xlarge: '0px 4px 30px rgba(34, 105, 251, 0.8)',
