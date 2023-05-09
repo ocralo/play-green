@@ -13,7 +13,7 @@ export default function Routes(): JSX.Element {
   return (
     <BrowserRouter>
       <RS>
-        <Route index element={<Login />} />
+        <Route index element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/sing-up' element={<SingUp />} />
         <Route element={<PrivateRoute isAllowed={isAuthenticated} />}>
