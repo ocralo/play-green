@@ -9,6 +9,7 @@ export const NavigationNavbar = styled(NavigationNavbarBase)`
   border-radius: ${({theme}) => theme.borderRadius.xlarge};
   padding: ${({theme}) => theme.spacings.medium};
   margin: 0 2.2rem;
+  gap: ${({theme}) => theme.spacings.xlarge};
 
   .button-navigation {
     background: ${({theme}) => theme.colors.backgroundNavigation};
