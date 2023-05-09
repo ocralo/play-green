@@ -1,4 +1,16 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
+
+const appear = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`
 
 export const HomeLayout = styled.div`
   background: ${({theme}) => theme.colors.background};
@@ -29,6 +41,7 @@ export const HomeLayout = styled.div`
     height: 8.1rem;
     width: 8.1rem;
     border-radius: 50%;
+    animation: ${appear} 0.4s ease-in-out forwards;
 
     svg {
       fill: ${({theme}) => theme.colors.buttonText};
@@ -54,6 +67,7 @@ export const HomeLayout = styled.div`
     gap: ${({theme}) => theme.spacings.large};
     align-items: center;
     margin: 4.7rem 0;
+    animation: ${appear} 0.4s ease-in-out forwards;
   }
 
   @media (min-width: ${({theme}) => theme.devices.small}) {
