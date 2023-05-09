@@ -29,9 +29,9 @@
       "@routes/*": ["src/Routes/*"],
       "@assets/*": ["src/assets/*"],
       "@public/*": ["public/*"],
-      "@pages/*": ["src/pages/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/utils/types/custom.d.ts"],
   "references": [{"path": "./tsconfig.node.json"}]
 }
