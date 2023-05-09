@@ -35,6 +35,7 @@ export const getSportsLiked = async (): Promise<
 > => {
   try {
     const user = auth.currentUser
+
     if (!user) {
       throw new Error('User not found')
     }
@@ -44,13 +45,16 @@ export const getSportsLiked = async (): Promise<
       user.uid,
       SportFirebaseEnum.SPORTS_LIKED
     )
+
     const queryCollection = query(docRef)
 
     const listLiked: SportFirebase.ISportLiked[] = []
 
     const snapshot = await getDocs(queryCollection)
+
     snapshot.forEach((docData) => {
-      listLiked.push(docData.data() as SportFirebase.ISportLiked)
+      const data = docData.data()
+      listLiked.push(data.sport as SportFirebase.ISportLiked)
     })
 
     return listLiked

@@ -3,6 +3,7 @@ import {baseValues} from './baseValues'
 export const lightTheme = {
   colors: {
     background: '#F3F3F3',
+    backgroundCardList: '#FFFFFF',
     primary: '#1A5BE1',
     disabled: '#777777',
     error: ' #D36060',
@@ -22,6 +23,7 @@ export const lightTheme = {
 export const darkTheme = {
   colors: {
     background: '#181828',
+    backgroundCardList: '#212135',
     primary: '#FFFFFF',
     disabled: '#777777',
     error: ' #D36060',
