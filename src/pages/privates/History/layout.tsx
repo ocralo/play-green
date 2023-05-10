@@ -25,8 +25,8 @@ export const HistoryLayout = styled.div`
     background: transparent;
     box-shadow: none;
     align-self: flex-start;
-    padding: .6rem;
-    margin-left:  3.2rem;
+    padding: 0.6rem;
+    margin-left: 3.2rem;
     margin-top: 5.4rem;
     margin-bottom: 1.8rem;
 

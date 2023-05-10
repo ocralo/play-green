@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import CardIListImageBase from './base'
 
 const slideInAnimation = keyframes`

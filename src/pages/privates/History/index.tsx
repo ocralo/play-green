@@ -22,9 +22,9 @@ export default function History() {
   return (
     <HistoryLayout>
       <div className='history-container'>
-      <Button className='history-back-button'>
-        <ArrowLeftBoldIcon />
-      </Button>
+        <Button className='history-back-button'>
+          <ArrowLeftBoldIcon />
+        </Button>
         <h1 className='history-title'>History</h1>
         <h6 className='history-description'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.

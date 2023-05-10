@@ -9,7 +9,6 @@ export default function ButtonSwitchThemeBase({
   className,
 }: ButtonSwitchThemeComponent.Props): JSX.Element {
   const {theme, switchTheme} = useTheme()
-  
 
   return (
     <button className={className} key={theme} onClick={() => switchTheme()}>
