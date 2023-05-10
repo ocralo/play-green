@@ -37,7 +37,7 @@ export const HomeLayout = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 46rem;
+    height: 56rem;
     width: 39rem;
   }
 

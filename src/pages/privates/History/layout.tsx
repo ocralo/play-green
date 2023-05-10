@@ -1,20 +1,9 @@
 import styled from 'styled-components'
 
-/* const appear = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.5);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-` */
-
 export const HistoryLayout = styled.div`
+  position: relative;
   background: ${({theme}) => theme.colors.background};
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -32,12 +21,26 @@ export const HistoryLayout = styled.div`
     gap: 1.4rem;
   }
 
+  .history-back-button {
+    background: transparent;
+    box-shadow: none;
+    align-self: flex-start;
+    padding: .6rem;
+    margin-left:  3.2rem;
+    margin-top: 5.4rem;
+    margin-bottom: 1.8rem;
+
+    svg {
+      fill: ${({theme}) => theme.colors.buttonText};
+    }
+  }
+
   .history-container-cards {
     display: flex;
     flex-direction: column;
     position: relative;
     height: 100%;
-    max-height: 55vh;
+    max-height: 39vh;
     width: 100%;
     max-width: 42rem;
     gap: 1.4rem;
