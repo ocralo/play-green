@@ -1,5 +1,4 @@
 export namespace ButtonSwitchThemeComponent {
-  export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    children: React.ReactNode
-  }
+  export interface Props
+    extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 }

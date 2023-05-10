@@ -7,6 +7,7 @@ import Button from '@components/Button'
 import HearthIcon from '@components/Icons/Hearth'
 import DislikeIcon from '@components/Icons/Dislike'
 import Spinner from '@components/Loading'
+import ButtonSwitchTheme from '@components/ButtonSwitchTheme'
 
 import {HomeLayout} from './layout'
 
@@ -30,33 +31,36 @@ function Component() {
   return (
     <>
       <HomeLayout>
-        {isLoading ? (
-          <Spinner color='#1A5BE1' />
-        ) : (
-          <div className='home-container'>
+        <div className='home-container'>
+          <ButtonSwitchTheme />
+          {isLoading ? (
+            <div className='home-container-spinner'>
+              <Spinner color='#1A5BE1' />
+            </div>
+          ) : (
             <CardImage
               image={{src: sport?.image, alt: sport?.name}}
               text={sport?.name}
               key={`sport-${sport?.name}`}
               className='home-card-image'
             />
-            <div className='container-interaction'>
-              <Button
-                disabled={!sport}
-                className='dislike-button'
-                onClick={() => handleLikeSport(false)}>
-                <DislikeIcon />
-              </Button>
-              <Button
-                disabled={!sport}
-                className='like-button'
-                onClick={() => handleLikeSport(true)}>
-                <HearthIcon />
-              </Button>
-            </div>
-            <NavigationNavbar />
+          )}
+          <div className='container-interaction'>
+            <Button
+              disabled={!sport}
+              className='dislike-button'
+              onClick={() => handleLikeSport(false)}>
+              <DislikeIcon />
+            </Button>
+            <Button
+              disabled={!sport}
+              className='like-button'
+              onClick={() => handleLikeSport(true)}>
+              <HearthIcon />
+            </Button>
           </div>
-        )}
+          <NavigationNavbar />
+        </div>
       </HomeLayout>
     </>
   )

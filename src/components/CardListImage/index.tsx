@@ -1,5 +1,16 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import CardIListImageBase from './base'
+
+const slideInAnimation = keyframes`
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
 
 export const CardListImage = styled(CardIListImageBase)`
   display: grid;
@@ -9,6 +20,7 @@ export const CardListImage = styled(CardIListImageBase)`
   margin: 0 2.2rem;
   border-radius: 1.2rem;
   background: ${({theme}) => theme.colors.backgroundCardList};
+  animation: ${slideInAnimation} 0.5s ease-in-out;
 
   .container-lef {
     height: 100%;
