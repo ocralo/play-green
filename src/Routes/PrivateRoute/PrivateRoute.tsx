@@ -3,7 +3,7 @@ import {Navigate, Outlet} from 'react-router-dom'
 
 import {IPrivateRoute} from './interfaces'
 
-export default function PrivateRoute({
+function Component({
   isAllowed,
   redirectTo = '/login',
 }: IPrivateRoute.Props): React.ReactElement | JSX.Element {
@@ -13,3 +13,7 @@ export default function PrivateRoute({
 
   return <Outlet />
 }
+
+const PrivateRoute = React.memo(Component)
+
+export default PrivateRoute

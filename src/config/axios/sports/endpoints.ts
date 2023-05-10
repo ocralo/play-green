@@ -1,5 +1,5 @@
 export enum SportEndpoint {
-  GET_SPORTS = '/all_sports.php',
+  GET_SPORTS = '',
 }
 
 export default SportEndpoint

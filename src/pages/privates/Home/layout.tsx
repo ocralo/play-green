@@ -16,9 +16,10 @@ export const HomeLayout = styled.div`
   background: ${({theme}) => theme.colors.background};
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
 
   .home-container {
@@ -27,7 +28,17 @@ export const HomeLayout = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 42rem;
     height: 100%;
+  }
+
+  .home-container-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46rem;
+    width: 39rem;
   }
 
   .home-card-image {
@@ -76,7 +87,7 @@ export const HomeLayout = styled.div`
 
   @media (min-width: ${({theme}) => theme.devices.medium}) {
     padding: ${({theme}) => theme.spacings.medium};
-    height: 95vh;
+    min-height: 96vh;
   }
 
   @media (min-width: ${({theme}) => theme.devices.large}) {
@@ -85,7 +96,7 @@ export const HomeLayout = styled.div`
 
   @media (min-width: ${({theme}) => theme.devices.xlarge}) {
     padding: ${({theme}) => theme.spacings.xlarge};
-    height: 92vh;
+    min-height: 93vh;
   }
 `
 

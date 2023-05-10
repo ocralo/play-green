@@ -1,4 +1,4 @@
-import {useReducer} from 'react'
+import {useCallback, useMemo, useReducer} from 'react'
 import apiGetSports from '@config/axios/sports'
 import {addSportLiked, getSportsLiked} from '@config/firebase/sport'
 import {SportFirebase} from '@config/firebase/sport/interfaces'
@@ -13,7 +13,7 @@ export default function SportProvider({
 }: SportContext.Props): JSX.Element {
   const [state, dispatch] = useReducer(SportContextReducer, initialState)
 
-  const getSports = async (): Promise<void> => {
+  const getSports = useCallback(async (): Promise<void> => {
     dispatch({type: SportActionType.GET_SPORTS_START})
     try {
       const response = await apiGetSports()
@@ -33,37 +33,38 @@ export default function SportProvider({
         payload: {error: error.message},
       })
     }
-  }
+  }, [])
 
-  const addLikeSport = async (
-    sportLiked: SportFirebase.ISportLiked
-  ): Promise<void> => {
-    dispatch({
-      type: SportActionType.ADD_LIKE_SPORT_START,
-    })
-    try {
-      await addSportLiked(sportLiked)
-      const sport = {...sportLiked}
-      const {liked, ...newSport} = sport
-
+  const addLikeSport = useCallback(
+    async (sportLiked: SportFirebase.ISportLiked): Promise<void> => {
       dispatch({
-        type: SportActionType.SET_SPORT,
-        payload: {sport: state.sports[randomNumber(0, state.sports.length)]},
+        type: SportActionType.ADD_LIKE_SPORT_START,
       })
+      try {
+        await addSportLiked(sportLiked)
+        const sport = {...sportLiked}
+        const {liked, ...newSport} = sport
 
-      dispatch({
-        type: SportActionType.ADD_LIKE_SPORT_SUCCESS,
-        payload: {sportsLiked: newSport},
-      })
-    } catch (error: any) {
-      dispatch({
-        type: SportActionType.ADD_LIKE_SPORT_FAIL,
-        payload: {error: error.message},
-      })
-    }
-  }
+        dispatch({
+          type: SportActionType.SET_SPORT,
+          payload: {sport: state.sports[randomNumber(0, state.sports.length)]},
+        })
 
-  const getLikesSports = async (): Promise<void> => {
+        dispatch({
+          type: SportActionType.ADD_LIKE_SPORT_SUCCESS,
+          payload: {sportsLiked: newSport},
+        })
+      } catch (error: any) {
+        dispatch({
+          type: SportActionType.ADD_LIKE_SPORT_FAIL,
+          payload: {error: error.message},
+        })
+      }
+    },
+    [state.sports]
+  )
+
+  const getLikesSports = useCallback(async (): Promise<void> => {
     dispatch({
       type: SportActionType.GET_LIKED_SPORTS_START,
     })
@@ -79,11 +80,20 @@ export default function SportProvider({
         payload: {error: error.message},
       })
     }
-  }
+  }, [])
+
+  const value = useMemo(
+    () => ({
+      ...state,
+      getSports,
+      addLikeSport,
+      getLikesSports,
+    }),
+    [getSports, addLikeSport, getLikesSports, state]
+  )
 
   return (
-    <contextSport.Provider
-      value={{...state, getSports, addLikeSport, getLikesSports}}>
+    <contextSport.Provider key={'sport'} value={value}>
       {children}
     </contextSport.Provider>
   )

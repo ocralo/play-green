@@ -3,7 +3,7 @@ import {SportContext} from './interfaces'
 
 export const initialState: SportContext.State = {
   sports: null,
-  isLoading: true,
+  isLoading: false,
   sportsLiked: null,
   sport: null,
   error: null,

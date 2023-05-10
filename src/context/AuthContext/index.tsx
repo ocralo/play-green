@@ -1,4 +1,4 @@
-import {useEffect, useReducer} from 'react'
+import {useCallback, useEffect, useMemo, useReducer} from 'react'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -22,31 +22,37 @@ export default function AuthProvider({
     parseInitialState
   )
 
-  const signUp = async (email: string, password: string): Promise<void> => {
-    dispatch({type: AuthActionTypes.SIGNUP_START})
-    try {
-      await createUserWithEmailAndPassword(auth, email, password)
-    } catch (error: any) {
-      dispatch({
-        type: AuthActionTypes.SIGNUP_FAIL,
-        payload: {error: error.message},
-      })
-    }
-  }
+  const signUp = useCallback(
+    async (email: string, password: string): Promise<void> => {
+      dispatch({type: AuthActionTypes.SIGNUP_START})
+      try {
+        await createUserWithEmailAndPassword(auth, email, password)
+      } catch (error: any) {
+        dispatch({
+          type: AuthActionTypes.SIGNUP_FAIL,
+          payload: {error: error.message},
+        })
+      }
+    },
+    []
+  )
 
-  const login = async (email: string, password: string): Promise<void> => {
-    dispatch({type: AuthActionTypes.LOGIN_START})
-    try {
-      await signInWithEmailAndPassword(auth, email, password)
-    } catch (error: any) {
-      dispatch({
-        type: AuthActionTypes.LOGIN_FAIL,
-        payload: {error: error.message},
-      })
-    }
-  }
+  const login = useCallback(
+    async (email: string, password: string): Promise<void> => {
+      dispatch({type: AuthActionTypes.LOGIN_START})
+      try {
+        await signInWithEmailAndPassword(auth, email, password)
+      } catch (error: any) {
+        dispatch({
+          type: AuthActionTypes.LOGIN_FAIL,
+          payload: {error: error.message},
+        })
+      }
+    },
+    []
+  )
 
-  const logout = async (): Promise<void> => {
+  const logout = useCallback(async (): Promise<void> => {
     dispatch({type: AuthActionTypes.LOGOUT_START})
     try {
       await signOut(auth)
@@ -57,7 +63,7 @@ export default function AuthProvider({
         payload: {error: error.message},
       })
     }
-  }
+  }, [])
 
   useEffect(() => {
     dispatch({type: AuthActionTypes.LOGIN_START})
@@ -80,12 +86,20 @@ export default function AuthProvider({
       }
     })
     return () => unsubscribe()
-  }, [])
+  }, [logout])
+
+  const value = useMemo(
+    () => ({
+      ...state,
+      signUp,
+      login,
+      logout,
+    }),
+    [state, signUp, login, logout]
+  )
 
   return (
-    <contextAuth.Provider
-      value={{...state, signUp, login, logout}}
-      key={'auth'}>
+    <contextAuth.Provider key={'auth'} value={value}>
       {children}
     </contextAuth.Provider>
   )
