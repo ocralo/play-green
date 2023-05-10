@@ -7,16 +7,24 @@ import SingUp from '@pages/publics/SingUp'
 
 import PrivateRoute from '@routes/PrivateRoute/PrivateRoute'
 import useAuth from '@context/AuthContext/hooks'
+import Spinner from '@components/Loading'
 
 export default function Routes(): JSX.Element {
-  const {isAuthenticated} = useAuth()
+  const {isAuthenticated, isLoading} = useAuth()
   return (
     <BrowserRouter>
       <RS>
-        <Route index element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/sing-up' element={<SingUp />} />
-        <Route element={<PrivateRoute isAllowed={isAuthenticated} />}>
+        <Route
+          element={
+            isLoading ? (
+              <Spinner color='#1A5BE1' />
+            ) : (
+              <PrivateRoute isAllowed={isAuthenticated} />
+            )
+          }>
+          <Route index element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/history' element={<History />} />
         </Route>
