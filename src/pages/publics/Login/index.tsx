@@ -47,6 +47,7 @@ export default function Login() {
       <Form className='login-form' onSubmit={handleSubmit}>
         <FormInput
           className='login-input-user'
+          required
           label='User'
           name='email'
           id='email'
@@ -56,6 +57,7 @@ export default function Login() {
         />
         <FormInput
           className='login-input-password'
+          required
           label='Password'
           name='password'
           id='password'
@@ -65,7 +67,10 @@ export default function Login() {
         />
         {error && <ErrorText error={error} />}
         <p className='login-forgot'>Forgot your password?</p>
-        <Button className='login-submit-button' type='submit'>
+        <Button
+          disabled={!(user && user.email && user.password)}
+          className='login-submit-button'
+          type='submit'>
           Login
         </Button>
         <Button

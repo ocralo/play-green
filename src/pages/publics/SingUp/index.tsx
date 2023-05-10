@@ -46,6 +46,7 @@ export default function SingUp(): JSX.Element {
       </h6>
       <Form className='singup-form' onSubmit={handleSubmit}>
         <FormInput
+          required
           className='singup-input-user'
           label='User'
           name='email'
@@ -55,6 +56,7 @@ export default function SingUp(): JSX.Element {
           onChange={handleChange}
         />
         <FormInput
+          required
           className='singup-input-password'
           label='Password'
           name='password'

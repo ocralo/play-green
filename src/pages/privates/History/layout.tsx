@@ -44,11 +44,21 @@ export const HistoryLayout = styled.div`
     overflow-y: auto;
   }
 
+  .history-container-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 49rem;
+    width: 41rem;
+  }
+
   .navigation-bar {
     margin-top: 4rem;
   }
 
   .history-title {
+    align-self: flex-start;
+    margin-left: 3.2rem;
     margin-bottom: ${({theme}) => theme.spacings.small};
     font-family: ${({theme}) => theme.fontFamily.primary};
     font-size: ${({theme}) => theme.fontSizes.xxlarge};
@@ -58,22 +68,26 @@ export const HistoryLayout = styled.div`
   }
 
   .history-description {
+    align-self: flex-start;
+    margin-left: 3.2rem;
     margin-bottom: ${({theme}) => theme.spacings.large};
     font-family: ${({theme}) => theme.fontFamily.secondary};
     font-size: ${({theme}) => theme.fontSizes.medium};
     font-weight: ${({theme}) => theme.fontWeights.regular};
-    text-align: center;
+    text-align: start;
     line-height: 148.02%;
     max-width: 32.2rem;
     color: ${({theme}) => theme.colors.text};
   }
 
   .history-date {
+    align-self: flex-start;
+    margin-left: 3.2rem;
     margin-bottom: ${({theme}) => theme.spacings.large};
     font-family: ${({theme}) => theme.fontFamily.secondary};
     font-size: ${({theme}) => theme.fontSizes.small};
     font-weight: 600;
-    text-align: center;
+    text-align: start;
     line-height: 148.02%;
     max-width: 32.2rem;
     color: ${({theme}) => theme.colors.text};

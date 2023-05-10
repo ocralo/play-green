@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import {useEffect} from 'react'
+import React, {useCallback, useEffect} from 'react'
 
 import useSport from '@context/SportContext/hooks'
 import CardImage from '@components/CardImage'
@@ -11,12 +10,12 @@ import Spinner from '@components/Loading'
 
 import {HomeLayout} from './layout'
 
-export default function Home() {
+function Component() {
   const {getSports, sport, isLoading, addLikeSport} = useSport()
 
-  const handleRequest = async () => {
+  const handleRequest = useCallback(async () => {
     await getSports()
-  }
+  }, [getSports])
 
   const handleLikeSport = async (liked: boolean) => {
     if (!sport) return
@@ -26,7 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     handleRequest()
-  }, [])
+  }, [handleRequest])
 
   return (
     <>
@@ -38,6 +37,7 @@ export default function Home() {
             <CardImage
               image={{src: sport?.image, alt: sport?.name}}
               text={sport?.name}
+              key={`sport-${sport?.name}`}
               className='home-card-image'
             />
             <div className='container-interaction'>
@@ -61,3 +61,7 @@ export default function Home() {
     </>
   )
 }
+
+const Home = React.memo(Component)
+
+export default Home

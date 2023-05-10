@@ -21,6 +21,6 @@ export namespace AuthContext {
   }
 
   export interface Props {
-    children: React.ReactNode
+    children?: React.ReactNode
   }
 }

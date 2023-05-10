@@ -6,6 +6,5 @@ const Input = styled.input`
   border: none;
   border-radius: ${({theme}) => theme.borderRadius.small};
   padding: 0.5rem;
-  margin: 0.5rem;
 `
 export default Input
