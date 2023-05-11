@@ -3,23 +3,15 @@ import {SVGProps} from 'react'
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width={30}
-    height={30}
-    fill='none'
+    width={800}
+    height={800}
+    viewBox='0 0 24 24'
     {...props}>
-    <g
-      stroke='#232232'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={3}
-      clipPath='url(#a)'>
-      <path d='M25.313 15H4.688M13.125 6.563 4.687 15l8.438 8.438' />
-    </g>
-    <defs>
-      <clipPath id='a'>
-        <path fill='#fff' d='M0 0h30v30H0z' />
-      </clipPath>
-    </defs>
+    <path
+      fillRule='evenodd'
+      d='M11.707 4.293a1 1 0 0 1 0 1.414L6.414 11H20a1 1 0 1 1 0 2H6.414l5.293 5.293a1 1 0 0 1-1.414 1.414l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 0Z'
+      clipRule='evenodd'
+    />
   </svg>
 )
 export default SvgComponent
