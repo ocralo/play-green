@@ -43,6 +43,7 @@ export const HomeLayout = styled.div`
 
   .home-card-image {
     align-self: flex-start;
+    animation: ${appear} 0.4s ease-in-out forwards;
   }
 
   .like-button {
@@ -66,6 +67,7 @@ export const HomeLayout = styled.div`
     height: 5.1rem;
     width: 5.1rem;
     border-radius: 50%;
+    animation: ${appear} 0.4s ease-in-out forwards;
 
     svg {
       fill: ${({theme}) => theme.colors.error};

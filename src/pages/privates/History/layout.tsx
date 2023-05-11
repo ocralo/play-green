@@ -31,7 +31,9 @@ export const HistoryLayout = styled.div`
     margin-bottom: 1.8rem;
 
     svg {
-      fill: ${({theme}) => theme.colors.buttonText};
+      width: 3rem;
+      height: 3rem;
+      fill: ${({theme}) => theme.colors.text};
     }
   }
 

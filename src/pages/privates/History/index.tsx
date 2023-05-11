@@ -7,6 +7,7 @@ import Button from '@components/Button'
 import ArrowLeftBoldIcon from '@components/Icons/ArrowLeftBold'
 
 import {HistoryLayout} from './layout'
+import { NavLink } from 'react-router-dom'
 
 export default function History() {
   const {isLoading, getLikesSports, sportsLiked} = useSport()
@@ -22,9 +23,9 @@ export default function History() {
   return (
     <HistoryLayout>
       <div className='history-container'>
-        <Button className='history-back-button'>
+        <NavLink to='/home' className='history-back-button'>
           <ArrowLeftBoldIcon />
-        </Button>
+        </NavLink>
         <h1 className='history-title'>History</h1>
         <h6 className='history-description'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
