@@ -3,9 +3,9 @@ import styled from 'styled-components'
 export const HistoryLayout = styled.div`
   position: relative;
   background: ${({theme}) => theme.colors.background};
-  display: block;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
   min-height: 100vh;
@@ -42,7 +42,7 @@ export const HistoryLayout = styled.div`
     flex-direction: column;
     position: relative;
     height: 100%;
-    max-height: 39vh;
+    max-height: 45vh;
     width: 100%;
     max-width: 42rem;
     gap: 1.4rem;
@@ -62,7 +62,6 @@ export const HistoryLayout = styled.div`
   }
 
   .history-title {
-    align-self: flex-start;
     margin-left: 3.2rem;
     margin-bottom: ${({theme}) => theme.spacings.small};
     font-family: ${({theme}) => theme.fontFamily.primary};
@@ -70,12 +69,13 @@ export const HistoryLayout = styled.div`
     font-weight: ${({theme}) => theme.fontWeights.bold};
     text-align: center;
     color: ${({theme}) => theme.colors.text};
+    text-align: left;
   }
 
   .history-description {
     align-self: flex-start;
     margin-left: 3.2rem;
-    margin-bottom: ${({theme}) => theme.spacings.large};
+    margin-bottom: ${({theme}) => theme.spacings.small};
     font-family: ${({theme}) => theme.fontFamily.secondary};
     font-size: ${({theme}) => theme.fontSizes.medium};
     font-weight: ${({theme}) => theme.fontWeights.regular};
@@ -88,7 +88,7 @@ export const HistoryLayout = styled.div`
   .history-date {
     align-self: flex-start;
     margin-left: 3.2rem;
-    margin-bottom: ${({theme}) => theme.spacings.large};
+    margin-bottom: 1.4rem;
     font-family: ${({theme}) => theme.fontFamily.secondary};
     font-size: ${({theme}) => theme.fontSizes.small};
     font-weight: 600;
@@ -104,7 +104,7 @@ export const HistoryLayout = styled.div`
 
   @media (min-width: ${({theme}) => theme.devices.medium}) {
     padding: ${({theme}) => theme.spacings.medium};
-    min-height: 95vh;
+    min-height: 97vh;
   }
 
   @media (min-width: ${({theme}) => theme.devices.large}) {
@@ -113,7 +113,7 @@ export const HistoryLayout = styled.div`
 
   @media (min-width: ${({theme}) => theme.devices.xlarge}) {
     padding: ${({theme}) => theme.spacings.xlarge};
-    min-height: 92vh;
+    min-height: 93vh;
   }
 `
 

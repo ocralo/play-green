@@ -89,7 +89,7 @@ export const HomeLayout = styled.div`
 
   @media (min-width: ${({theme}) => theme.devices.medium}) {
     padding: ${({theme}) => theme.spacings.medium};
-    min-height: 96vh;
+    min-height: 97vh;
   }
 
   @media (min-width: ${({theme}) => theme.devices.large}) {
