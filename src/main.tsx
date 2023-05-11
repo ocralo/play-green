@@ -5,10 +5,10 @@ import App from './App'
 import GlobalStyle from './config/styles/GlobalStyle'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  <>
     <GlobalStyle />
     <ThemeStyleProvider>
       <App />
     </ThemeStyleProvider>
-  </React.StrictMode>
+  </>
 )
