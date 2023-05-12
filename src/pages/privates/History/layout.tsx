@@ -67,7 +67,7 @@ export const HistoryLayout = styled.div`
     font-family: ${({theme}) => theme.fontFamily.primary};
     font-size: ${({theme}) => theme.fontSizes.xxlarge};
     font-weight: ${({theme}) => theme.fontWeights.bold};
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({theme}) => theme.colors.text};
     text-align: left;
   }
 
