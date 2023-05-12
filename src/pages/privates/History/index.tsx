@@ -1,5 +1,5 @@
 import {useCallback, useEffect} from 'react'
-import { NavLink } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 import Spinner from '@components/Loading'
 import NavigationNavbar from '@components/NavigationNavbar'

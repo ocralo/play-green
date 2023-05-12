@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import ThemeStyleProvider from '@context/ThemeContext'
 import App from './App'
