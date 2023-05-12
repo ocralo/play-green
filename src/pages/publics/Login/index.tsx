@@ -17,7 +17,7 @@ export default function Login() {
     password: '',
   })
 
-  const {login, error} = useAuth()
+  const {login, error, isLoading} = useAuth()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setUser({
@@ -68,7 +68,7 @@ export default function Login() {
         {error && <ErrorText error={error} />}
         <p className='login-forgot'>Forgot your password?</p>
         <Button
-          disabled={!(user && user.email && user.password)}
+          disabled={!(user && user.email && user.password && !isLoading)}
           className='login-submit-button'
           type='submit'>
           Login

@@ -48,12 +48,14 @@ function Component() {
           <div className='container-interaction'>
             <Button
               disabled={!sport}
+              key={`disLike-${sport?.name}`}
               className='dislike-button'
               onClick={() => handleLikeSport(false)}>
               <DislikeIcon />
             </Button>
             <Button
               disabled={!sport}
+              key={`like-${sport?.name}`}
               className='like-button'
               onClick={() => handleLikeSport(true)}>
               <HearthIcon />
